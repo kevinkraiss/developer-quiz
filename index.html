@@ -4,9 +4,59 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/style.css" />
     <title>Developer Quiz</title>
 </head>
 <body>
+    <main>
+
+        <div class="game-quiz-container">
+
+            <div class="game-details-container">
+                <h1>Score : <span id="player-score"></span> / 5</h1>
+                <h1> Question : <span id="question-number"></span> / 5</h1>
+                <h1>Time : <span id="timer">0:30</span></h1>
+            </div>
+
+            <div class="game-question-container">
+                <h1 id="display-question"></h1>
+            </div>
+
+            <div class="game-options-container">
+
+
+                <span>
+                    <input type="radio" id="option-one" name="option" class="radio" value="ansA" />
+                    <label for="option-one" class="option" id="option-one-label"></label>
+                </span>
+
+
+                <span>
+                    <input type="radio" id="option-two" name="option" class="radio" value="ansB" />
+                    <label for="option-two" class="option" id="option-two-label"></label>
+                </span>
+
+
+                <span>
+                    <input type="radio" id="option-three" name="option" class="radio" value="ansC" />
+                    <label for="option-three" class="option" id="option-three-label"></label>
+                </span>
+
+
+                <span>
+                    <input type="radio" id="option-four" name="option" class="radio" value="ansD" />
+                    <label for="option-four" class="option" id="option-four-label"></label>
+                </span>
+
+
+            </div>
+
+            <div class="next-button-container">
+                <button>Next Question</button>
+            </div>
+
+        </div>
+    </main>
     
 </body>
 </html>
