@@ -1,3 +1,5 @@
+// javascript questions found here: https://www.interviewbit.com/javascript-mcq/
+
 // question array
 var questions = [
     {
@@ -20,32 +22,32 @@ var questions = [
         question: "Which of the following keywords is used to define a variable in Javascript?",
         ansA: "var",
         ansB: "let",
-        ansC: "All of the above",
-        ansD: "None of the above",
-        correctAns: "All of the above"
+        ansC: "Both let and var",
+        ansD: "Neither let or var",
+        correctAns: "Both let and var"
     },
     {
         question: "Which of the following methods is used to access HTML elements using Javascript?",
         ansA: "getElementbyId()",
         ansB: "getElementsbyClassName()",
-        ansC: "All of the above",
-        ansD: "None of the above",
-        correctAns: "All of the above"
+        ansC: "Both methods",
+        ansD: "Neither method",
+        correctAns: "Both methods"
     },
     {
         question: "Which function is used to serialize an object into a JSON string in Javascript?",
         ansA: "stringify()",
         ansB: "parse()",
         ansC: "convert()",
-        ansD: "None of the above",
+        ansD: "None of these answers",
         correctAns: "stringify()"
     },
     {
         question: "Javascript is an _______ language?",
         ansA: "Object-Oriented",
         ansB: "Object-Based",
-        ansC: "Procedurl",
-        ansD: "None of the above",
+        ansC: "Procederal",
+        ansD: "None of these answers",
         correctAns: "Object-Oriented"
     }
 ]
@@ -127,14 +129,24 @@ function stopTimer() {
 // render elements into doc
 function renderQuestion() {
     questionEl.textContent = questions[currentQuestion].question
+
+
+    // found a way to shuffle array here: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+
+    var questionShuffle = [
+        questions[currentQuestion].ansA, 
+        questions[currentQuestion].ansB, 
+        questions[currentQuestion].ansC, 
+        questions[currentQuestion].ansD
+    ].sort(function() {return 0.5 - Math.random() });
     
-    ans1El.textContent = questions[currentQuestion].ansA
+    ans1El.textContent = questionShuffle[0]
      
-    ans2El.textContent = questions[currentQuestion].ansB
+    ans2El.textContent = questionShuffle[1]
      
-    ans3El.textContent = questions[currentQuestion].ansC
+    ans3El.textContent = questionShuffle[2]
      
-    ans4El.textContent = questions[currentQuestion].ansD
+    ans4El.textContent = questionShuffle[3]
 
     totalQuestionsEl.textContent = totalQuestions
 
