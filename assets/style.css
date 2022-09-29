@@ -36,8 +36,8 @@ body{
 }
 
 #welcome button{
-    width: 8rem;
-    height: 2rem;
+    width: 10rem;
+    height: 2.5rem;
     border-radius: 10px;
     background: none;
     color: rgb(25, 25, 25);
@@ -49,6 +49,7 @@ body{
 
 #full-timer {
     display: none;
+    width: 4rem;
 }
 
 main{
@@ -117,6 +118,11 @@ main{
     border-radius: 20px;
     overflow: hidden;
     cursor: crosshair;
+    transition: 0.4s;
+}
+
+.game-options-container button:hover {
+    background-color: rgba(77, 65, 248, 0.383);
 }
 
 .next-button-container button{

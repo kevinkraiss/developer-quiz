@@ -84,7 +84,7 @@ var finalScoreEl = document.querySelector('#final-score')
 var fullTime = 60000
 var timeElapsed = 0
 var currentQuestion = 0
-var totalQuestions = questions.length
+var totalQuestions = (questions.length * 1000)
 var score = 0
 
 var selectedAns
@@ -152,6 +152,7 @@ function checkAns(correctAns) {
         
     } else {
         timeElapsed += 1000;
+        
     }
 }
 
@@ -163,7 +164,7 @@ function nextQuestion() {
     } else {
         stopTimer();
         if ((fullTime - timeElapsed) > 0)
-            score += ((fullTime - timeElapsed)/10);
+            score += (fullTime - timeElapsed);
         scoreEl.textContent = score
         finalScoreEl.textContent = score
         hide(quizEl)
@@ -195,5 +196,9 @@ playAgainBtn.addEventListener('click', function() {
     hide(gameSummaryEl)
     reset()
     show(welcomeEl)
+
+})
+
+submitHighscoreBtn.addEventListener('click', function() {
 
 })
