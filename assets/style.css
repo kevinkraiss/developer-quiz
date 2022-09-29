@@ -125,7 +125,7 @@ main{
     background-color: rgba(77, 65, 248, 0.383);
 }
 
-.next-button-container button{
+.abort-button-container button{
     width: 8rem;
     height: 2rem;
     border-radius: 10px;

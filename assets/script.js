@@ -54,6 +54,7 @@ var questions = [
 // vars
 var welcomeEl = document.querySelector('#welcome')
 var startBtn = document.querySelector('#startQuiz')
+var abortBtn = document.querySelector('#abort-button')
 
 var nextBtn = document.querySelector('#next-button-container')
 var timerEl = document.querySelector('#timer')
@@ -190,6 +191,14 @@ answerBtns.addEventListener('click', function(event){
     selectedAns = event.target.innerHTML
     checkAns()
  }
+})
+
+abortBtn.addEventListener('click', function() {
+    hide(quizEl)
+    stopTimer()
+    hide(fullTimerEl)
+    reset()
+    show(welcomeEl)
 })
 
 playAgainBtn.addEventListener('click', function() {
