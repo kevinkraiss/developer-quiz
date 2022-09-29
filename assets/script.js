@@ -110,10 +110,11 @@ function checkAns(correctAns) {
     if (questions[currentQuestion].correctAns == selectedAns) {
         score += 1
         scoreEl.textContent = score;
+        currentQuestion++
+        renderQuestion()
         
     } else {
         timeElapsed += 10;
-        console.log(selectedAns)
     }
 }
 
