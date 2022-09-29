@@ -13,9 +13,15 @@
 <main>
 <div id="header">
     <div class="row" id="scoreBar">
-        <div class="col-4" id="viewScores">View Highscores</div>
-        <div class="col-2 h2">Time: <span id="timer">0</span></div>
+        <div id="viewScores">View Highscores</div>
+        <div id="full-timer">Time: <span id="timer">0</span></div>
     </div>
+</div>
+
+<div id="game-summary">
+    <div>Your final score was <span id='final-score'>0</span></div>
+    <button id="submit-highscore">Submit Highscore</button>
+    <button id="play-again">Play Again</button>
 </div>
 
 <div class="container mt-5"></div>
@@ -30,8 +36,8 @@
         <div class="game-quiz-container">
 
             <div class="game-details-container">
-                <h1>Score : <span id="player-score">0</span> / 5</h1>
-                <h1> Question : <span id="question-number"></span> / 5</h1>
+                <h1>Score : <span id="player-score">0</span> / <span id="total-questions">0</span></h1>
+                <h1> Question : <span id="question-number">0</span> </h1>
             </div>
 
             <div class="game-question-container">

@@ -47,6 +47,10 @@ body{
     outline: none;
 }
 
+#full-timer {
+    display: none;
+}
+
 main{
     width: 100%;
     min-height: 100vh;
@@ -88,6 +92,7 @@ main{
     justify-content: center;
     border: 2px solid darkgray;
     border-radius: 25px;
+    padding: 2rem;
 }
 
 .game-question-container h1{
@@ -126,7 +131,30 @@ main{
     outline: none;
 }
 
-input[type="radio"] {
-    position: relative;
+#game-summary {
+    font-size: 1.5rem;
+    width: 40rem;
+    height: 10rem;
+    background-color: rgba(211, 211, 211, 0.61);
     display: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 30px;
+}
+
+#game-summary button{
+    width: 8rem;
+    height: 3rem;
+    border-radius: 10px;
+    background: none;
+    color: rgb(25, 25, 25);
+    font-weight: 600;
+    border: 2px solid gray;
+    cursor: pointer;
+    outline: none;
+}
+
+#final-score {
+    font-weight: 600;
 }
