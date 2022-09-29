@@ -169,6 +169,7 @@ function nextQuestion() {
         scoreEl.textContent = score
         finalScoreEl.textContent = score
         hide(quizEl)
+        hide(fullTimerEl)
         show(gameSummaryEl)
         timerEl.textContent = 0
     }
@@ -203,6 +204,7 @@ abortBtn.addEventListener('click', function() {
 
 playAgainBtn.addEventListener('click', function() {
     hide(gameSummaryEl)
+    hide(fullTimerEl)
     reset()
     show(welcomeEl)
 
