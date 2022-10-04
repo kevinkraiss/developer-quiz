@@ -52,6 +52,27 @@ body{
     background-color: rgba(82, 255, 47, 0.5);
 }
 
+#view-scores, #exit-high-scores {
+    width: 10rem;
+    height: 2.5rem;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0);
+    color: rgb(25, 25, 25);
+    font-weight: 600;
+    border: 2px solid gray;
+    cursor: pointer;
+    outline: none;
+    transition: 0.5s;
+}
+
+#view-scores:hover {
+    background-color: rgba(82, 255, 47, 0.5);
+}
+
+#exit-high-scores:hover {
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
 #full-timer {
     display: none;
     width: 4rem;
@@ -67,7 +88,7 @@ main{
     background-image: linear-gradient(120deg, rgb(0, 89, 255), rgb(255, 255, 255));
 }
 
-.game-quiz-container{
+.game-quiz-container {
     width: 40rem;
     height: 30rem;
     background-color: rgba(211, 211, 211, 0.61);
@@ -173,4 +194,16 @@ main{
 
 #final-score {
     font-weight: 600;
+}
+
+#high-scores {
+    display: none;
+}
+
+.high-scores-container {
+    height: 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
 }

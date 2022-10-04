@@ -57,6 +57,8 @@ var questions = [
 var welcomeEl = document.querySelector('#welcome')
 var startBtn = document.querySelector('#startQuiz')
 var abortBtn = document.querySelector('#abort-button')
+var viewScoreBtn = document.querySelector('#view-scores')
+var exitHighScoreBtn = document.querySelector('#exit-high-scores')
 
 var nextBtn = document.querySelector('#next-button-container')
 var timerEl = document.querySelector('#timer')
@@ -83,6 +85,7 @@ var totalQuestionsEl = document.querySelector('#total-questions')
 var questionNumber = document.querySelector('#question-number')
 var gameSummaryEl = document.querySelector('#game-summary')
 var finalScoreEl = document.querySelector('#final-score')
+var highScoreEl = document.querySelector('#high-scores')
 
 var fullTime = 60000
 var timeElapsed = 0
@@ -109,6 +112,9 @@ function show(element) {
     element.style.display = "flex"
 }
 
+function showBlock(element) {
+    element.style.display = "block"
+}
 
 // timer
 function startTimer() {
@@ -222,6 +228,25 @@ playAgainBtn.addEventListener('click', function() {
 
 })
 
+viewScoreBtn.addEventListener('click', function() {
+    hide(welcomeEl)
+    hide(viewScoreBtn)
+    hide(quizEl)
+    stopTimer()
+    hide(fullTimerEl)
+    reset()
+    show(highScoreEl)
+})
+
+exitHighScoreBtn.addEventListener('click', function() {
+    hide(highScoreEl)
+    show(welcomeEl)
+    showBlock(viewScoreBtn)
+})
+
+
+
 submitHighscoreBtn.addEventListener('click', function() {
+
 
 })

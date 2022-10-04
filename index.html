@@ -13,7 +13,7 @@
 <main>
 <div id="header">
     <div class="row" id="scoreBar">
-        <div id="viewScores">View Highscores</div>
+        <button id="view-scores">View Highscores</button>
         <div id="full-timer">Time:&nbsp;<span id="timer">0</span></div>
     </div>
 </div>
@@ -24,15 +24,25 @@
     <button id="play-again">Play Again</button>
 </div>
 
-<div class="container mt-5"></div>
+<div id="high-scores">
+    <div class="high-scores-container">
+        <h1>High Scores</h1>
+        <ol>
+            <li>score1</li>
+        </ol>
+        <button id="exit-high-scores">Return</button>
+    </div>
+</div>
+
     <div class="container" id="welcome">
         <h1>Developer Quiz</h1>
         <p>
-            answer the follwing questions before your miliseconds run out for a points bonus
+            answer the follwing questions before your miliseconds run out for a points bonus!
         </p>
         <button id="startQuiz">Start Quiz</button>
 
     </div>
+
         <div class="game-quiz-container">
 
             <div class="game-details-container">
