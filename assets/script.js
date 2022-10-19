@@ -59,18 +59,16 @@ var startBtn = document.querySelector('#startQuiz')
 var abortBtn = document.querySelector('#abort-button')
 var viewScoreBtn = document.querySelector('#view-scores')
 var exitHighScoreBtn = document.querySelector('#exit-high-scores')
-
 var nextBtn = document.querySelector('#next-button-container')
-var timerEl = document.querySelector('#timer')
-var quizEl = document.querySelector('.game-quiz-container')
-
 var submitHighscoreBtn = document.querySelector('#submit-highscore')
+var submitInitalBtn = document.getElementById('inital-submit')
 var playAgainBtn = document.querySelector('#play-again')
 
 // quiz elements
 var questionEl = document.querySelector('.game-question-container')
-
 var answerBtns = document.querySelector('.game-options-container')
+var timerEl = document.querySelector('#timer')
+var quizEl = document.querySelector('.game-quiz-container')
 
 var ans1El = document.querySelector('#btn1')
 var ans2El = document.querySelector('#btn2')
@@ -78,20 +76,24 @@ var ans3El = document.querySelector('#btn3')
 var ans4El = document.querySelector('#btn4')
 
 var scoreBarEl = document.querySelector('#scoreBar')
+var scoreEl = document.querySelector('#player-score')
 var fullTimerEl = document.querySelector('#full-timer')
 var gameDetailsEl = document.querySelector('.game-details-container')
-var scoreEl = document.querySelector('#player-score')
 var totalQuestionsEl = document.querySelector('#total-questions')
 var questionNumber = document.querySelector('#question-number')
 var gameSummaryEl = document.querySelector('#game-summary')
 var finalScoreEl = document.querySelector('#final-score')
-var highScoreEl = document.querySelector('#high-scores')
+var finalScoreSubmitEl = document.getElementById('final-score-submit')
+var highScoreEl = document.getElementById('high-scores')
+var scoreFormEl = document.getElementById('score-form')
+var userInitalInputEl = document.getElementById('user-inital-input')
 
 var fullTime = 60000
 var timeElapsed = 0
 var currentQuestion = 0
 var totalQuestions = (questions.length * 1000)
 var score = 0
+var userInital
 
 var selectedAns
 
@@ -137,7 +139,7 @@ function renderQuestion() {
     questionEl.textContent = questions[currentQuestion].question
 
 
-    // found a way to shuffle array here: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+    // found a way to shuffle array with instructor help here: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 
     var questionShuffle = [
         questions[currentQuestion].ansA, 
@@ -186,6 +188,7 @@ function nextQuestion() {
             score += (fullTime - timeElapsed);
         scoreEl.textContent = score
         finalScoreEl.textContent = score
+        finalScoreSubmitEl.textContent = score
         hide(quizEl)
         hide(fullTimerEl)
         show(gameSummaryEl)
@@ -193,6 +196,17 @@ function nextQuestion() {
     }
 
 }
+
+// prompt user for initals
+function submitInital(event) {
+    event.preventDefault()
+    var userInital = userInitalInputEl.value.toUpperCase()
+    console.log(userInital, score)
+    
+}
+
+// log high score and initals to local
+
 
 
 
@@ -229,14 +243,16 @@ playAgainBtn.addEventListener('click', function() {
 })
 
 viewScoreBtn.addEventListener('click', function() {
+    show(highScoreEl)
     hide(welcomeEl)
     hide(viewScoreBtn)
     hide(quizEl)
     stopTimer()
     hide(fullTimerEl)
     reset()
-    show(highScoreEl)
 })
+
+
 
 exitHighScoreBtn.addEventListener('click', function() {
     hide(highScoreEl)
@@ -246,7 +262,16 @@ exitHighScoreBtn.addEventListener('click', function() {
 
 
 
-submitHighscoreBtn.addEventListener('click', function() {
+submitHighscoreBtn.addEventListener('click', function() { 
+    hide(gameSummaryEl)
+    show(scoreFormEl)
+})
 
+submitInitalBtn.addEventListener('click', function(event) {
+    submitInital(event)
+    hide(scoreFormEl)
+    hide(viewScoreBtn)
+    show(highScoreEl)
+    reset()
 
 })

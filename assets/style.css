@@ -168,7 +168,7 @@ main{
     background-color: rgba(255, 0, 0, 0.5);
 }
 
-#game-summary {
+#game-summary, #score-form {
     font-size: 1.5rem;
     width: 40rem;
     height: 10rem;
@@ -207,3 +207,4 @@ main{
     align-items: center;
     justify-content: space-around;
 }
+
