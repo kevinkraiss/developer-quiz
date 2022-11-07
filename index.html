@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Press+Start+2P&display=swap" rel="stylesheet">
     <title>Developer Quiz</title>
 </head>
 <body>
@@ -13,6 +16,7 @@
 <main>
 <div id="header">
     <div class="row" id="scoreBar">
+        <h1 id="hs-header">High Scores</h1>
         <button id="view-scores">View Highscores</button>
         <div id="full-timer">Time:&nbsp;<span id="timer">0</span></div>
     </div>
@@ -28,25 +32,23 @@
     <form>
         <p>score: <span id='final-score-submit'>0</span></p>
         <p>please enter your initals</p>
-        <input id="user-inital-input" type="text">
+        <input id="user-inital-input" type="text" maxlength="3">
         <button id="inital-submit">Submit</button>
     </form>
 </div>
 
 <div id="high-scores">
     <div class="high-scores-container">
-        <h1>High Scores</h1>
-        <ol>
-            <li>score1</li>
-        </ol>
+        <ol id="high-score-list"></ol>
         <button id="exit-high-scores">Return</button>
+        <button id="clear-high-scores">Clear High Scores</button>
     </div>
 </div>
 
     <div class="container" id="welcome">
         <h1>Developer Quiz</h1>
         <p>
-            answer the follwing questions before your miliseconds run out for a points bonus!
+            Answer the follwing questions before your miliseconds run out for bonus points!
         </p>
         <button id="startQuiz">Start Quiz</button>
 

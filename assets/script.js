@@ -53,7 +53,7 @@ var questions = [
 ]
 
 
-// vars
+// buttons
 var welcomeEl = document.querySelector('#welcome')
 var startBtn = document.querySelector('#startQuiz')
 var abortBtn = document.querySelector('#abort-button')
@@ -63,6 +63,7 @@ var nextBtn = document.querySelector('#next-button-container')
 var submitHighscoreBtn = document.querySelector('#submit-highscore')
 var submitInitalBtn = document.getElementById('inital-submit')
 var playAgainBtn = document.querySelector('#play-again')
+var clearHSBtn = document.getElementById('clear-high-scores')
 
 // quiz elements
 var questionEl = document.querySelector('.game-question-container')
@@ -87,13 +88,20 @@ var finalScoreSubmitEl = document.getElementById('final-score-submit')
 var highScoreEl = document.getElementById('high-scores')
 var scoreFormEl = document.getElementById('score-form')
 var userInitalInputEl = document.getElementById('user-inital-input')
+var highScoreListEl = document.getElementById('high-score-list')
+var hsHeaderEl = document.getElementById('hs-header')
 
 var fullTime = 60000
 var timeElapsed = 0
 var currentQuestion = 0
 var totalQuestions = (questions.length * 1000)
 var score = 0
-var userInital
+var userInital = ''
+var interval
+
+
+var highScoreList = JSON.parse(localStorage.getItem('highScoreObj')) ?? []
+var highScoreObj = JSON.parse(localStorage.getItem('highScoreObj')) ?? []
 
 var selectedAns
 
@@ -162,6 +170,14 @@ function renderQuestion() {
 
 }
 
+// render high scores from localstorage
+function renderHighScores() {
+    highScoreListEl.innerHTML = highScoreObj
+        .map((score) => `<li>${score.score} - ${score.userInital}`)
+        .join('')
+//        console.log(highScoreListEl)
+}
+
 // check if selected answer is correct
 function checkAns(correctAns) {
     
@@ -197,18 +213,21 @@ function nextQuestion() {
 
 }
 
-// prompt user for initals
+// prompt user for initals and push/sort/save scores in HS array
 function submitInital(event) {
     event.preventDefault()
-    var userInital = userInitalInputEl.value.toUpperCase()
-    console.log(userInital, score)
-    
+    userInital = userInitalInputEl.value.toUpperCase()
+    var newScore = { userInital, score}
+ //   console.log(newScore)
+    highScoreList.push(newScore)
+    highScoreList.sort((a, b) => b.score - a.score)
+    highScoreList.splice(10)
+ //   console.log(highScoreList)
+    localStorage.setItem('highScoreObj', JSON.stringify(highScoreList))
+    highScoreObj = JSON.parse(localStorage.getItem('highScoreObj'))
+    renderHighScores(event)
+
 }
-
-// log high score and initals to local
-
-
-
 
 // event listeners
 startBtn.addEventListener('click', function() {
@@ -217,6 +236,7 @@ startBtn.addEventListener('click', function() {
     show(quizEl)
     renderQuestion()
     startTimer()
+
 })
 
 answerBtns.addEventListener('click', function(event){
@@ -243,6 +263,8 @@ playAgainBtn.addEventListener('click', function() {
 })
 
 viewScoreBtn.addEventListener('click', function() {
+    renderHighScores()
+    show(hsHeaderEl)
     show(highScoreEl)
     hide(welcomeEl)
     hide(viewScoreBtn)
@@ -256,6 +278,7 @@ viewScoreBtn.addEventListener('click', function() {
 
 exitHighScoreBtn.addEventListener('click', function() {
     hide(highScoreEl)
+    hide(hsHeaderEl)
     show(welcomeEl)
     showBlock(viewScoreBtn)
 })
@@ -270,8 +293,20 @@ submitHighscoreBtn.addEventListener('click', function() {
 submitInitalBtn.addEventListener('click', function(event) {
     submitInital(event)
     hide(scoreFormEl)
+    renderHighScores()
     hide(viewScoreBtn)
+    show(hsHeaderEl)
     show(highScoreEl)
+    // write high scores to local
     reset()
 
+})
+
+clearHSBtn.addEventListener('click', function(event) {
+    var check = confirm('Are you sure you want to erase all high scores?')
+    if (check === true) {
+        localStorage.removeItem('highScoreObj')
+        renderHighScores()
+        location.reload()
+    }
 })

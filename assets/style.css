@@ -24,15 +24,23 @@ body{
     display: flex;
     justify-content: space-around;
     align-items: center;
+    border: 8px rgba(128, 128, 128, 0.25);
+    border-top: 4px rgba(128, 128, 128, 0.25);
+    border-style: dashed double double;
 }
 
 #welcome {
-    height: 10rem;
+    height: 15rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
 
+}
+
+#welcome h1 {
+    font-size: 100px;
+    font-family: 'Bebas Neue'
 }
 
 #welcome button{
@@ -52,7 +60,7 @@ body{
     background-color: rgba(82, 255, 47, 0.5);
 }
 
-#view-scores, #exit-high-scores {
+#view-scores, #exit-high-scores, #clear-high-scores {
     width: 10rem;
     height: 2.5rem;
     border-radius: 10px;
@@ -63,6 +71,10 @@ body{
     cursor: pointer;
     outline: none;
     transition: 0.5s;
+}
+
+#high-scores button {
+    margin-top: 5px;
 }
 
 #view-scores:hover {
@@ -168,6 +180,10 @@ main{
     background-color: rgba(255, 0, 0, 0.5);
 }
 
+#high-scores button:hover {
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
 #game-summary, #score-form {
     font-size: 1.5rem;
     width: 40rem;
@@ -200,11 +216,36 @@ main{
     display: none;
 }
 
+#hs-header {
+    display: none;
+    font-family: 'Bebas Neue';
+    font-size: 55px;
+    margin-top: 2px;
+}
+
 .high-scores-container {
-    height: 10rem;
+    height: auto;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
 }
-
+#high-score-list {
+    padding: 2px;
+    width: fit-content;
+    line-height: 30px;
+    font-weight: 500;
+    font-family: 'Press Start 2P';
+}
+ #inital-submit {
+    width: 4rem;
+    height: 1.5rem;
+    border-radius: 10px;
+    background: none;
+    color: rgb(25, 25, 25);
+    font-weight: 600;
+    border: 2px solid gray;
+    cursor: pointer;
+    outline: none;
+}
